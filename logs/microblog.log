@@ -90,3 +90,4 @@ WHERE user.username = ?
 2024-01-04 10:04:22,529 INFO: ToDoList Startup [in C:\Users\Gio\Documents\GitHub\planner\app\__init__.py:31]
 2024-01-04 10:05:35,386 INFO: ToDoList Startup [in C:\Users\Gio\Documents\GitHub\planner\app\__init__.py:31]
 2024-01-04 10:05:47,047 INFO: ToDoList Startup [in C:\Users\Gio\Documents\GitHub\planner\app\__init__.py:31]
+2024-01-04 10:06:30,992 INFO: ToDoList Startup [in C:\Users\Gio\Documents\GitHub\planner\app\__init__.py:31]
