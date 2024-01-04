@@ -169,7 +169,8 @@ def edittask(id):
     if todo.user_id == current_user.id:
         if request.method == 'POST':
             # Update the task with the new data
-            todo.body = request.form.get('edited_task')
+            todo.head = request.form.get('todo_head')
+            todo.body = request.form.get('todo_body')
             db.session.commit()
             flash('Plan wurde aktualisiert.')
             return redirect(url_for('index'))

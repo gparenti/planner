@@ -6,9 +6,8 @@
 
 <!-- Inhalt der Loginseite | Anmeldemaske-->
 {% block app_content %}
-<center>
+<form action="" method="post" novalidate class="position-absolute top-0 start-50 translate-middle-x">
     <h1>Anmeldung</h1>
-    <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>
             {{ form.username.label }}<br>
@@ -25,8 +24,8 @@
             {% endfor %}
         </p>
         <p>{{ form.remember_me() }} {{ form.remember_me.label.text|default('Angemeldet bleiben') }}</p>
-        <p><button type="submit" style="color: white; background-color: #32CD32; border-radius: 5px; ">Anmelden</button></p>
-    </form>
+        <p><button type="submit" class="btn btn-outline-success" border-radius: 5px; ">Anmelden</button></p>
+    
     <p>Neu hier? <a href="{{ url_for('register') }}">Klicken Sie hier, um sich zu registrieren!</a></p>
-</center>
+</form>
 {% endblock %}

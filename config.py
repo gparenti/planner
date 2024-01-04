@@ -18,5 +18,5 @@ class Config(object):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     MAIL_DEFAULT_SENDER = os.environ.get('MAIL_DEFAULT_SENDER')
-    ADMINS = ['gioele.parenti@student.ipso.ch']
+    ADMINS = ['@student.ipso.ch']
     

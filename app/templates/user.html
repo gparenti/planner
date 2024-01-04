@@ -5,7 +5,7 @@
     <tr>
         <td valign="top"><img src="{{ user.avatar(128) }}"></td>
         <td style="vertical-align: top; padding-left: 20px;">
-            <h1 style="margin-top: 0;">Benutzer: {{ user.username }}</h1>
+            <h2 style="margin-top: 0;">Benutzer: {{ user.username }}</h2>
             {% if user.about_me %}<p>{{ user.about_me }}</p>{% endif %}
             {% if user.last_seen %}<p>Zuletzt gesehen am: {{ user.last_seen.strftime('%d-%m-%Y %H:%M:%S') }}</p>{% endif %}
         </td>
@@ -17,5 +17,21 @@
         </td>
     </tr>
 </table>
+<!-- Display todos of the user -->
+<h3 style="margin-top: 5px;">{{ user.username }}'s Aufgaben:</h3>
+{% for todo in user.todos %}
+        <div class="col-sm-10 col-md-6 col-lg-5 mb-3"> 
+            <div class="card" style="padding: 15px; border: 3px solid black;">
+                <div class="card-header">
+                    <p class="card-text"><strong>Titel: {{ todo.head }}</strong></p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{ todo.body }}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    Status: Offen - eröffnet am {{ todo.timestamp.strftime('%d-%m-%Y %H:%M:%S') }}
+                </div>
+            </div>
+        </div>
+{% endfor %}
 {% endblock %}
-{{ todo.body }}
