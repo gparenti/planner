@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<h1>{{ current_user.username }}'s Planner</h1>
+
+<!-- Form for adding a new task -->
+<div class="card mb-4">
+    <h3 class="card-header">Einen neuen Planner-Punkt hinzufügen:</h3>
+    <form action="{{ url_for('add') }}" method="POST" class="card-body">
+        <div class="form-group">
+            <label for="todo_head">Titel:</label>
+            <input type="text" name="todo_head" id="todo_head" class="form-control" placeholder="Titel eingeben">
+        </div>
+        <div class="form-group">
+            <label for="todo_body">Beschreibung:</label>
+            <textarea name="todo_body" id="todo_body" class="form-control" rows="3" placeholder="Beschreibung"></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark">Aufgabe hinzufügen</button>
+    </form>
+</div>
+
+
+<!-- Display incomplete tasks -->
+<div class="row">
+    {% for todo in incomplete %}
+    <div class="col-sm-5 mb-1">
+        <div class="card" style="max-width: 40rem; padding: 15px; border: 3px solid black;">
+            <div class="card-header">
+                <p class="card-text"><strong>Titel: {{ todo.head }} durch {{ todo.author }}</strong></p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ todo.body }}</p>
+                <div class="btn-group" role="group">
+                    <a href="{{ url_for('complete', id=todo.id) }}" class="btn btn-primary">Abschließen</a>
+                    <a href="{{ url_for('edittask', id=todo.id) }}" class="btn btn-dark">Bearbeiten</a>
+                    <a href="{{ url_for('deletetask', id=todo.id) }}" class="btn btn-danger">Löschen</a>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                Status: Offen - eröffnet am {{ todo.timestamp.strftime('%d-%m-%Y %H:%M:%S') }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<!-- Display complete tasks -->
+<div class="row">
+    {% for todo in complete %}
+    <div class="col-sm-5 mb-1">
+        <div class="card" style="max-width: 40rem; padding: 15px; border: 3px solid black;">
+            <div class="card-header">
+                <p class="card-text"><strong>Titel: {{ todo.head }} durch {{ todo.author }}</strong></p>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{ todo.body }}</p>
+                <div class="btn-group" role="group">
+                    <a href="{{ url_for('notcomplete', id=todo.id) }}" class="btn btn-warning">Wiedereröffnen</a>
+                    <a href="{{ url_for('deletetask', id=todo.id) }}" class="btn btn-danger">Löschen</a>
+                </div>
+            </div>
+            <div class="card-footer text-muted">
+                Status: Abgeschlossen am {{ todo.timestamp.strftime('%d-%m-%Y %H:%M:%S') }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
