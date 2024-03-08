@@ -6,7 +6,7 @@ services:
     environment:
       - MYSQL_DATABASE=microblog
       - MYSQL_PASSWORD=mysqlserver
-      - MYSQL_USER=root
+      - MYSQL_USER=microblog
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
     volumes:
       - ./db:/var/lib/mysql
