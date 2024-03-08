@@ -4,7 +4,7 @@ services:
     container_name: mysql
     restart: always
     environment:
-      - MYSQL_DATABASE=microblog
+      - MYSQL_DATABASE=db
       - MYSQL_PASSWORD=mysqlserver
       - MYSQL_USER=microblog
       - MYSQL_RANDOM_ROOT_PASSWORD=yes
@@ -21,7 +21,7 @@ services:
 
   flask:
     build: .
-    container_name: todoflask
+    container_name: planner
     restart: always
     environment:
         - DATABASE_URL=mysql+pymysql://microblog:mysqlserver@dbserver/microblog
