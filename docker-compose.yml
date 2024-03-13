@@ -39,5 +39,19 @@ services:
     networks:
       - app-network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 8080:80  # Map port 8080 of the host to port 80 of the container (default for phpMyAdmin)
+    environment:
+      PMA_HOST: mysql  # Set the database host to the 'mysql' service name
+      PMA_USER: microblog  # Set the database username (replace if different)
+      PMA_PASSWORD: microblog  # Set the database password (replace if different)
+    networks:
+      - app-network
+
+
 networks:
   app-network:
