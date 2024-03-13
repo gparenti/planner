@@ -3,9 +3,6 @@ FROM python:slim
 # Install required dependencies
 RUN apt-get update && apt-get install -y default-libmysqlclient-dev && rm -rf /var/lib/apt/lists/*
 
-# Set the working directory
-WORKDIR /app
-
 # Copy requirements.txt to the container
 COPY requirements.txt requirements.txt
 

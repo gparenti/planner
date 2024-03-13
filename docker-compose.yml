@@ -28,7 +28,7 @@ services:
 
   flask:
     build: .
-    container_name: microblog
+    container_name: planner
     restart: always
     environment:
         - DATABASE_URL=mysql://microblog:microblog@mysql/microblog
