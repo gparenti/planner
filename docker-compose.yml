@@ -29,5 +29,3 @@ services:
       - ./app:/app:ro
     depends_on:
       - mysql
-    links:
-      - mysql:dbserver
