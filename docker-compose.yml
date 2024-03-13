@@ -2,7 +2,7 @@ version: '3'
 
 services:
   mysql:
-    image: mysql
+    image: mariadb
     container_name: mysql
     restart: always
     environment:
@@ -31,7 +31,7 @@ services:
     container_name: microblog
     restart: always
     environment:
-        - DATABASE_URL=mysql+pymysql://microblog:microblog@mysql/microblog
+        - DATABASE_URL=mysql://microblog:microblog@mysql/microblog
     volumes:
       - ./app:/app:ro
     depends_on:
