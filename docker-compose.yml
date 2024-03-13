@@ -4,10 +4,10 @@ services:
     container_name: mysql
     restart: always
     environment:
-      - MYSQL_DATABASE=db
-      - MYSQL_PASSWORD=mysqlserver
+      - MYSQL_DATABASE=microblog
+      - MYSQL_PASSWORD=microblog
       - MYSQL_USER=microblog
-      - MYSQL_RANDOM_ROOT_PASSWORD=yes
+      - MYSQL_ROOT_PASSWORD=password
     volumes:
       - ./db:/var/lib/mysql
   nginx:
