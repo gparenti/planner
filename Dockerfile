@@ -1,30 +1,19 @@
 FROM python:slim
 
-# Install required dependencies
-RUN apt-get update && apt-get install -y default-libmysqlclient-dev && rm -rf /var/lib/apt/lists/*
+RUN mkdir /usr/src/planner-master
+WORKDIR /usr/src/planner-master
 
-# Copy requirements.txt to the container
-COPY requirements.txt requirements.txt
+COPY . .
 
-# Install Python dependencies
-RUN pip install --no-cache-dir -r requirements.txt
+RUN chmod a+x boot.sh
 
-# Install gunicorn
-RUN pip install gunicorn
+RUN pip install -r requirements.txt
+RUN pip install gunicorn pymysql cryptography
 
-# Copy the application code to the container
-COPY app app
-COPY migrations migrations
-COPY microblog.py config.py boot.sh ./
-
-# Make boot.sh executable
-RUN chmod +x boot.sh
-
-# Set the Flask app environment variable
 ENV FLASK_APP microblog.py
 
-# Expose port 5000
 EXPOSE 5000
 
-# Set the entry point
-ENTRYPOINT ["./boot.sh"]
+RUN if [ ! -f /usr/src/planner-master/boot.sh ]; then echo "boot.sh not found"; exit 1; fi --> pfad isch komplett falsch gsi und ned nach best practice gsi
+
+ENTRYPOINT [ "/usr/src/planner-master/boot.sh" ]
