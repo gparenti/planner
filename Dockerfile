@@ -1,7 +1,7 @@
 FROM python:slim
 
-RUN mkdir /usr/src/planner-master
-WORKDIR /usr/src/planner-master
+RUN mkdir /home/ubuntu/planner
+WORKDIR /home/ubuntu/planner
 
 COPY . .
 
@@ -14,6 +14,6 @@ ENV FLASK_APP microblog.py
 
 EXPOSE 5000
 
-RUN if [ ! -f /usr/src/planner-master/boot.sh ]; then echo "boot.sh not found"; exit 1; fi --> pfad isch komplett falsch gsi und ned nach best practice gsi
+RUN if [ ! -f /home/ubuntu/planner/boot.sh ]; then echo "boot.sh not found"; exit 1; fi --> pfad isch komplett falsch gsi und ned nach best practice gsi
 
-ENTRYPOINT [ "/usr/src/planner-master/boot.sh" ]
+ENTRYPOINT [ "/home/ubuntu/planner/boot.sh" ]
