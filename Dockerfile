@@ -4,6 +4,7 @@ RUN mkdir /home/ubuntu/planner
 WORKDIR /home/ubuntu/planner
 
 COPY . .
+COPY .env .env
 
 RUN chmod a+x boot.sh
 
