@@ -17,10 +17,11 @@ COPY app app
 COPY migrations migrations
 COPY .env .env
 COPY microblog.py config.py boot.sh ./
+
 # Make boot.sh executable
 RUN chmod a+x boot.sh
 # Set the Flask app environment variable
 ENV FLASK_APP microblog.py
 # Expose port 5000
 EXPOSE 5000
-ENTRYPOINT [ "/home/ubuntu/planner/boot.sh" ]
+ENTRYPOINT [ "./boot.sh" ]

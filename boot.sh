@@ -19,4 +19,4 @@ done
 
 # Start the Flask application
 log_message "Starting Flask application..."
-exec gunicorn -w 4 --bind 0.0.0.0:5000 wsgi:app
+exec gunicorn -w 4 --bind 0.0.0.0:5000 microblog:app
